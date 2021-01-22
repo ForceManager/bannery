@@ -6,12 +6,41 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <style>
+      html, body {
+        height: 100%;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #bannery-button {
+        border: 0;
+        padding: 1rem;
+        background: darkturquoise;
+        transition: background 0.25s;
+        font-size: 1rem;
+        color: white;
+        cursor: pointer;
+        outline: 0;
+      }
+
+      #bannery-button:hover {
+        background: turquoise;
+      }
+    </style>
   </head>
   <body>
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
+    <button id="bannery-button">Show banner</button>
     <div class="bannery"></div>
-    <!-- built files will be auto injected -->
+    <script>
+      document.getElementById('bannery-button').addEventListener('click', function () {
+        Bannery({ url: '/example.json' });
+      });
+    </script>
   </body>
 </html>

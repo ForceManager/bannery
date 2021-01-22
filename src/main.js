@@ -7,5 +7,4 @@ window.Bannery = ({ url, mountSelector = '.bannery' }) => {
   app = createApp(Banner);
   app.provide('url', url);
   app.mount(mountSelector);
-  console.log(app);
 };
