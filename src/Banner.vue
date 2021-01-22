@@ -2,18 +2,23 @@
   <transition name="slide-fade">
     <div class="bannery__container" v-if="canShow">
       <div class="bannery__texts">
-        <div class="bannery__title">
+        <div v-if="banner.texts.title" class="bannery__title">
           {{ banner.texts.title }}
         </div>
-        <div class="bannery__content">
+        <div v-if="banner.texts.content" class="bannery__content">
           {{ banner.texts.content }}
         </div>
       </div>
       <div class="bannery__buttons">
-        <a class="bannery__buttons__secondary" @click="hide">
+        <a v-if="banner.texts.secondaryButton" class="bannery__buttons__secondary" @click="hide">
           {{ banner.texts.secondaryButton }}
         </a>
-        <a class="bannery__buttons__primary" :href="banner.link" target="_blank">
+        <a
+          v-if="banner.link && banner.texts.primaryButton"
+          class="bannery__buttons__primary"
+          :href="banner.link"
+          target="_blank"
+        >
           {{ banner.texts.primaryButton }}
         </a>
       </div>
@@ -29,7 +34,7 @@ export default {
   name: 'Banner',
   inject: ['key'],
   setup() {
-    const key = inject('key');
+    const dataUrl = inject('url');
     const banner = ref();
     const canShow = ref(false);
 
@@ -40,12 +45,16 @@ export default {
         canShow.value = false;
 
         // Getting banner
-        banner.value = await getBanner(key);
+        banner.value = await getBanner(dataUrl);
+
+        if (!banner.value.enabled) return;
 
         // Checking can show
         const currentDate = new Date();
-        const startDate = banner.value.startDate?.toDate();
-        const endDate = banner.value.endDate?.toDate();
+        const startDate = new Date(banner.value.startDate);
+        const endDate = new Date(banner.value.endDate);
+
+        if (startDate === 'Invalid date' || endDate === 'Invalid date') return;
         if (startDate && endDate && (currentDate < startDate || currentDate > endDate)) return;
         if (!banner.value.texts) return;
 
@@ -139,7 +148,7 @@ export default {
 }
 
 .slide-fade-leave-active {
-  transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
+  transition: all 0.35s cubic-bezier(1, 0.5, 0.8, 1);
 }
 
 .slide-fade-enter-from,
