@@ -47,9 +47,9 @@ export default {
         // Getting banner
         banner.value = await getBanner(dataUrl);
 
+        // Checking can show
         if (!banner.value.enabled) return;
 
-        // Checking can show
         const currentDate = new Date();
         const startDate = new Date(banner.value.startDate);
         const endDate = new Date(banner.value.endDate);

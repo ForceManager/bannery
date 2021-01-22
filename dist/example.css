@@ -1,0 +1,31 @@
+.bannery__container {
+  background: #4b5971;
+  font-family: Roboto;
+}
+
+.bannery__buttons__primary {
+  color: white;
+  background: #ed8b00;
+}
+
+.bannery__buttons__primary:hover {
+  background: #c77500;
+}
+
+.bannery__buttons__secondary {
+  color: white;
+  background: transparent;
+}
+
+.bannery__buttons__secondary:hover {
+  text-decoration: none;
+}
+
+.bannery__title {
+  color: white;
+  font-weight: 600;
+}
+
+.bannery__content {
+  color: white;
+}

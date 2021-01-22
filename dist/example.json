@@ -1,0 +1,13 @@
+{
+  "css": ".bannery__container {   background: #4b5971;   font-family: Roboto; }  .bannery__buttons__primary {   color: white;   background: #ed8b00; }  .bannery__buttons__primary:hover {   background: #c77500; }  .bannery__buttons__secondary {   color: white;   background: transparent; }  .bannery__buttons__secondary:hover {   text-decoration: none; }  .bannery__title {   color: white;   font-weight: 600; }  .bannery__content {   color: white; }",
+  "startDate": "2021-01-21T06:29:14.185Z",
+  "endDate": "2021-20-23T06:29:14.185Z",
+  "link": "https://google.es",
+  "texts": {
+    "title": "Vuelve el Digital Sales Summit",
+    "content": "Vende más y mejor en 2021: 3 días, 27 expertos, 6 categorías ¡Apúntate ahora!",
+    "primaryButton": "Inscribirme",
+    "secondaryButton": "Cerrar"
+  },
+  "enabled": true
+}
