@@ -68,7 +68,7 @@ export default {
         canShow.value = true;
       } catch (e) {
         canShow.value = false;
-        console.error(e);
+        throw e;
       }
     };
 
@@ -118,6 +118,7 @@ export default {
     padding: 0.5rem 2rem;
     border-radius: 0.25rem;
     text-decoration: none;
+    white-space: nowrap;
     transition: background 0.2s, text-decoration 0.2s;
   }
 

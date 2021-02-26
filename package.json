@@ -42,11 +42,5 @@
     "prettier": "^2.2.1",
     "sass": "^1.32.8",
     "sass-loader": "^10.1.1"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie < 11",
-    "not op_mini all"
-  ]
+  }
 }
