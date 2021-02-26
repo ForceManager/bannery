@@ -32,7 +32,7 @@ yarn build
 </script>
 ```
 
-[example.json](/dbalas/bannery/blob/main/public/example.json)
+[example.json](https://github.com/embedmode/bannery/blob/main/dist/example.json)
 
 ## 🌐 Browser support
 
