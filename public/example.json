@@ -5,7 +5,7 @@
   "link": "https://google.es",
   "texts": {
     "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    "content": "Nunc consectetur consectetur nisi, vel tincidunt mauris varius lacinia. Donec accumsan ex elit, volutpat congue turpis ultricies a. Donec velit massa, auctor id diam dapibus, lobortis tempus metus.",
+    "content": "Nunc consectetur consectetur nisi, vel tincidunt mauris varius lacinia. Donec accumsan ex elit, volutpat congue turpis ultricies a.",
     "primaryButton": "Join us",
     "secondaryButton": "Close"
   },
