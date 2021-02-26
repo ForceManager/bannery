@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico">
+  <title>Bannery</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #bannery-button {
+      border: 0;
+      padding: 1rem;
+      background: darkturquoise;
+      transition: background 0.25s;
+      font-size: 1rem;
+      color: white;
+      cursor: pointer;
+      outline: 0;
+    }
+
+    #bannery-button:hover {
+      background: turquoise;
+    }
+  </style>
+</head>
+<body>
+  <noscript>
+    <strong>We're sorry but Bannery doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+  </noscript>
+  <button id="bannery-button">Show banner</button>
+  <div class="bannery"></div>
+  <script src="https://cdn.jsdelivr.net/gh/dbalas/bannery/dist/js/bannery.js"></script>
+  <script>
+    document.getElementById('bannery-button').addEventListener('click', function () {
+      Bannery({
+        url: '/example.json'
+      });
+    });
+  </script>
+</body>
+
+</html>

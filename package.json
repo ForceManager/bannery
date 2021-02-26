@@ -7,23 +7,46 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/embedmode/bannery"
+  },
+  "bugs": {
+    "url": "https://github.com/embedmode/bannery/issues"
+  },
+  "homepage": "https://github.com/embedmode/bannery",
+  "keywords": [
+    "library",
+    "vue",
+    "javascript",
+    "banner",
+    "ad"
+  ],
+  "license": "MIT",
+  "sideEffects": false,
   "dependencies": {
     "axios": "^0.21.1",
-    "core-js": "^3.8.3",
+    "core-js": "^3.9.0",
     "vue": "^3.0.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.10",
-    "@vue/cli-plugin-eslint": "~4.5.10",
-    "@vue/cli-service": "~4.5.10",
-    "@vue/compiler-sfc": "^3.0.5",
+    "@vue/cli-plugin-babel": "~4.5.11",
+    "@vue/cli-plugin-eslint": "~4.5.11",
+    "@vue/cli-service": "~4.5.11",
+    "@vue/compiler-sfc": "^3.0.6",
     "@vue/eslint-config-prettier": "^6.0.0",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.18.0",
+    "eslint": "^7.20.0",
     "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-vue": "^7.4.1",
+    "eslint-plugin-vue": "^7.6.0",
     "prettier": "^2.2.1",
-    "sass": "^1.32.5",
+    "sass": "^1.32.8",
     "sass-loader": "^10.1.1"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie < 11",
+    "not op_mini all"
+  ]
 }
