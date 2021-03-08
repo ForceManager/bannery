@@ -1,7 +1,6 @@
 # Bannery
 
-> Simple embeddable component for displaying a banner
-> You can use it as a Cookie advice or maybe to announce an event.
+> Simple embeddable component for displaying a banner, you can use it as a Cookie advice or maybe to announce an event.
 
 ## ⭐️ Features
 
