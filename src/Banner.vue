@@ -1,87 +1,110 @@
 <template>
-  <transition name="slide-fade">
-    <div class="bannery__container" v-if="canShow">
-      <div class="bannery__texts">
-        <div v-if="banner.texts.title" class="bannery__title">
-          {{ banner.texts.title }}
-        </div>
-        <div v-if="banner.texts.content" class="bannery__content">
-          {{ banner.texts.content }}
+  <teleport to="body">
+    <transition :name="banner?.animation">
+      <div
+        :id="key"
+        class="bannery"
+        :class="[
+          banner.themeClass,
+          banner.position === 'bottom' ? 'bannery--bottom' : 'bannery--top',
+        ]"
+        v-if="display"
+      >
+        <div class="bannery__container">
+          <div class="bannery__texts">
+            <div v-if="banner.title" class="bannery__title" v-html="banner.title" />
+            <div v-if="banner.description" class="bannery__content" v-html="banner.description" />
+          </div>
+          <div class="bannery__buttons">
+            <a
+              v-if="banner.buttons.secondaryText"
+              class="bannery__buttons__secondary"
+              :href="banner.buttons.secondaryLink"
+              target="_blank"
+              @click="onSecondary"
+            >
+              {{ banner.buttons.secondaryText }}
+            </a>
+            <a
+              v-if="banner.buttons.primaryText"
+              class="bannery__buttons__primary"
+              :href="banner.buttons.primaryLink"
+              target="_blank"
+              @click="onPrimary"
+            >
+              {{ banner.buttons.primaryText }}
+            </a>
+          </div>
         </div>
       </div>
-      <div class="bannery__buttons">
-        <a v-if="banner.texts.secondaryButton" class="bannery__buttons__secondary" @click="hide">
-          {{ banner.texts.secondaryButton }}
-        </a>
-        <a
-          v-if="banner.link && banner.texts.primaryButton"
-          class="bannery__buttons__primary"
-          :href="banner.link"
-          target="_blank"
-        >
-          {{ banner.texts.primaryButton }}
-        </a>
-      </div>
-    </div>
-  </transition>
+    </transition>
+  </teleport>
 </template>
 
 <script>
-import { ref, onMounted, inject } from 'vue';
-import { getBanner } from '@/lib/services/banner';
+import { ref, onMounted, onUnmounted, inject } from 'vue';
+import { shouldDisplay, injectCss, transformMarkdown, getOptions } from '@/lib/features';
 
 export default {
   name: 'Banner',
-  inject: ['key'],
   setup() {
-    const dataUrl = inject('url');
+    const url = inject('url');
+    const key = inject('key');
+    const options = inject('options');
+    const hooks = inject('hooks');
+    const teleportEl = inject('teleportEl');
+
     const banner = ref();
-    const canShow = ref(false);
+    const display = ref(false);
 
     const fetchBanner = async () => {
       try {
         // Cleaning
         document.getElementById('bannery-styles')?.remove();
-        canShow.value = false;
+        display.value = false;
 
-        // Getting banner
-        banner.value = await getBanner(dataUrl);
+        // Getting and composing options
+        banner.value = await getOptions({ url, options, hooks, key });
 
-        // Checking can show
-        if (!banner.value.enabled) return;
+        // Markdown
+        banner.value.title = transformMarkdown(banner.value.title);
+        banner.value.description = transformMarkdown(banner.value.description);
 
-        const currentDate = new Date();
-        const startDate = new Date(banner.value.startDate);
-        const endDate = new Date(banner.value.endDate);
+        // css
+        injectCss(banner.value.css);
 
-        if (startDate === 'Invalid date' || endDate === 'Invalid date') return;
-        if (startDate && endDate && (currentDate < startDate || currentDate > endDate)) return;
-        if (!banner.value.texts) return;
-
-        // Injecting css
-        document.getElementById('bannery-styles')?.remove();
-        const styleTag = document.createElement('style');
-        styleTag.setAttribute('id', 'bannery-styles');
-        styleTag.appendChild(document.createTextNode(banner.value.css));
-        document.head.appendChild(styleTag);
-
-        canShow.value = true;
+        // Display
+        display.value = shouldDisplay(banner.value, key);
+        hooks.onOpen && hooks.onOpen();
       } catch (e) {
-        canShow.value = false;
+        display.value = false;
+        console.error(e);
         throw e;
       }
     };
 
     onMounted(fetchBanner);
+    onUnmounted(() => {
+      teleportEl.remove();
+    });
 
-    function hide() {
-      canShow.value = false;
+    function onPrimary(e) {
+      display.value = false;
+      hooks.onPrimary && hooks.onPrimary(e);
+    }
+
+    function onSecondary(e) {
+      display.value = false;
+      hooks.onSecondary && hooks.onSecondary(e);
     }
 
     return {
+      key,
       banner,
-      canShow,
-      hide,
+      display,
+      confirm,
+      onPrimary,
+      onSecondary,
     };
   },
 };
@@ -90,10 +113,21 @@ export default {
 <style lang="scss">
 .bannery {
   position: fixed;
-  bottom: 0;
   left: 0;
   width: 100%;
   font-family: Arial, Helvetica, sans-serif;
+
+  p {
+    margin: 0;
+  }
+
+  &--top {
+    top: 0;
+  }
+
+  &--bottom {
+    bottom: 0;
+  }
 }
 
 .bannery__container {
@@ -101,6 +135,11 @@ export default {
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
+
+  @media (max-width: 750px) {
+    display: block;
+    padding: 1rem;
+  }
 }
 
 .bannery__title,
@@ -140,21 +179,40 @@ export default {
   .bannery__buttons__secondary:hover {
     text-decoration: underline;
   }
+
+  @media (max-width: 750px) {
+    display: flex;
+    margin-top: 1rem;
+    justify-content: flex-end;
+  }
+
+  @media (max-width: 250px) {
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+  }
 }
 
-/* Enter and leave animations can use different */
-/* durations and timing functions.              */
-.slide-fade-enter-active {
+/* default animations */
+.slide-up-fade-enter-active,
+.slide-down-fade-enter-active {
   transition: all 0.2s ease-out;
 }
 
-.slide-fade-leave-active {
-  transition: all 0.35s cubic-bezier(1, 0.5, 0.8, 1);
+.slide-up-fade-leave-active,
+.slide-down-fade-leave-active {
+  transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
 }
 
-.slide-fade-enter-from,
-.slide-fade-leave-to {
+.slide-up-fade-enter-from,
+.slide-up-fade-leave-to {
   transform: translateY(50px);
+  opacity: 0;
+}
+
+.slide-down-fade-enter-from,
+.slide-down-fade-leave-to {
+  transform: translateY(-50px);
   opacity: 0;
 }
 </style>

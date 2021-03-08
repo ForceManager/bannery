@@ -1,12 +1,17 @@
 # Bannery
 
 > Simple embeddable component for displaying a banner
+> You can use it as a Cookie advice or maybe to announce an event.
 
 ## ⭐️ Features
 
-- Full css customization
 - Options from external source
-- Start and end date to display it
+- Markdown support
+- Start/End date
+- One-time display
+- Callbacks
+- CSS customization
+- Custom CSS animation
 
 ## 📦 Setup
 
@@ -26,13 +31,45 @@ yarn build
 ## ⚙️ Usage
 
 ```
-<script src="https://cdn.jsdelivr.net/gh/dbalas/bannery/dist/js/bannery.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/embedmode/bannery/dist/js/bannery.js"></script>
 <script>
-  Bannery({ url: 'https://cdn.jsdelivr.net/gh/dbalas/bannery/dist/example.json' });
+  Bannery({ url: 'https://cdn.jsdelivr.net/gh/embedmode/bannery/dist/example.json' });
 </script>
 ```
 
-[example.json](https://github.com/embedmode/bannery/blob/main/dist/example.json)
+### Parameters
+
+- External source options will be deep-merged with local ones.
+
+| Attribute         | Type     | Default   | Description                                                                                                |
+| ----------------- | -------- | --------- | ---------------------------------------------------------------------------------------------------------- |
+| key               | string   |           | Banner identity, it will be used as dom element id, cookie name suffix and it will be sent to url request. |
+| url               | string   |           | External options as a valid JSON response.                                                                 |
+| options           | object   | see below | Local options                                                                                              |
+| hooks.onOptions   | function |           | After get and merge options, you can overwrite them here returning and object.                             |
+| hooks.onOpen      | function |           | When banner is display it.                                                                                 |
+| hooks.onPrimary   | function |           | When primary button is clicked. Native event passed.                                                       |
+| hooks.onSecondary | function |           | When secondary button is clicked. Native event passed.                                                     |
+
+### Options
+
+> [example.json](https://github.com/embedmode/bannery/blob/main/dist/example.json)
+
+| Key                   | Type    | Default               | Description                                                                             |
+| --------------------- | ------- | --------------------- | --------------------------------------------------------------------------------------- |
+| enabled               | boolean | true                  | First check for display it.                                                             |
+| title                 | string  |                       | Support markdown without html, only rendered if exists.                                 |
+| description           | string  |                       | Support markdown without html, only rendered if exists.                                 |
+| position              | string  | bottom                | [top\|bottom] Banner display window position.                                           |
+| display.startDate     | date    |                       | Display it if current date is after startDate, independent of endDate.                  |
+| display.endDate       | date    |                       | Display it if current date is before endDate, independent of startDate.                 |
+| display.mode          | string  |                       | [cookie\|session] Enable one-time display storing a value in cookies or sessionStorage. |
+| buttons.primaryLink   | string  |                       | Primary button link, commonly used as a confirm button.                                 |
+| buttons.primaryText   | string  |                       | Primary button text, commonly used as a confirm button.                                 |
+| buttons.secondaryText | string  |                       | Secondary button text, commonly used as a close button.                                 |
+| themeClass            | string  | bannery-default-theme | Root element class name used as a theme class name.                                     |
+| css                   | string  |                       | css string injected as a style tag                                                      |
+| animation             | string  |                       | css animation class name                                                                |
 
 ## 🌐 Browser support
 
