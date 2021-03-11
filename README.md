@@ -51,9 +51,12 @@ Alternatively, you can include it via jsDelivr CDN:
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/embedmode/bannery/dist/style.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/embedmode/bannery/dist/theme.css">
 
-<script type="module" src="hhttps://cdn.jsdelivr.net/gh/embedmode/bannery/dist/bannery.es.js"></script>
-<script>
-  Bannery({ url: 'https://cdn.jsdelivr.net/gh/embedmode/bannery/dist/example.json' });
+<script type="module">
+  import Bannery from "https://cdn.jsdelivr.net/gh/embedmode/bannery/dist/bannery.es.js";
+
+  Bannery({
+    url: "https://cdn.jsdelivr.net/gh/embedmode/bannery/dist/example.json"
+  });
 </script>
 ```
 
