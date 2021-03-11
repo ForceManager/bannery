@@ -1,5 +1,14 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="favicon.ico"><title>bannery</title><style>html, body {
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Bannery</title>
+    <style>
+      html, body {
         height: 100%;
+        margin: 0;
       }
       body {
         display: flex;
@@ -19,6 +28,20 @@
 
       #bannery-button:hover {
         background: turquoise;
-      }</style><link href="js/bannery.js" rel="preload" as="script"></head><body><noscript><strong>We're sorry but bannery doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><button id="bannery-button">Show banner</button><div class="bannery"></div><script>document.getElementById('bannery-button').addEventListener('click', function () {
-        Bannery({ url: 'example.json' });
-      });</script><script src="js/bannery.js"></script></body></html>
+      }
+    </style>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but Bannery doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <button id="bannery-button">Show banner</button>
+    <script src="bannery.umd.js"></script>
+    <script>
+      document.getElementById('bannery-button').addEventListener('click', function () {
+        Bannery({ key: "example", url: 'example.json' });
+      });
+    </script>
+  </body>
+</html>
