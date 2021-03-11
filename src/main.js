@@ -11,7 +11,7 @@ const DEFAULTS = {
 
 let app;
 
-window.Bannery = ({ url, key, options = {}, hooks = {} }) => {
+function Bannery({ url, key, options = {}, hooks = {} }) {
   if (app) app.unmount();
 
   const elem = document.createElement('div');
@@ -26,4 +26,10 @@ window.Bannery = ({ url, key, options = {}, hooks = {} }) => {
 
   app.mount(elem);
   return app;
-};
+}
+
+export default Bannery;
+
+if (import.meta.env.DEV) {
+  window.Bannery = Bannery;
+}

@@ -1,13 +1,17 @@
 {
-  "css": ".bannery__container {   background: #4b5971;   font-family: Roboto; }  .bannery__buttons__primary {   color: white;   background: #ed8b00; }  .bannery__buttons__primary:hover {   background: #c77500; }  .bannery__buttons__secondary {   color: white;   background: transparent; }  .bannery__buttons__secondary:hover {   text-decoration: none; }  .bannery__title {   color: white;   font-weight: 600; }  .bannery__content {   color: white; }",
-  "startDate": "2021-01-21T06:29:14.185Z",
-  "endDate": "2021-20-23T06:29:14.185Z",
-  "link": "https://google.es",
-  "texts": {
-    "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    "content": "Nunc consectetur consectetur nisi, vel tincidunt mauris varius lacinia. Donec accumsan ex elit, volutpat congue turpis ultricies a.",
-    "primaryButton": "Join us",
-    "secondaryButton": "Close"
+  "title": "**Lorem ipsum** dolor sit amet, consectetur adipiscing elit.",
+  "description": "Nunc consectetur consectetur nisi, vel tincidunt mauris varius lacinia. Donec accumsan ex elit, volutpat congue turpis ultricies a.",
+  "enabled": true,
+  "position": "bottom",
+  "themeClass": "bannery-default-theme",
+  "display": {
+    "startDate": "2021-01-21T06:29:14.185Z",
+    "endDate": "2021-04-23T06:29:14.185Z"
   },
-  "enabled": true
+  "buttons": {
+    "primaryLink": "https://google.es",
+    "primaryText": "Join us",
+    "secondaryText": "Close"
+  },
+  "css": ".bannery-default-theme {   background: #4b5971;   font-family: Roboto; }  .bannery-default-theme .bannery__buttons__primary {   color: white;   background: #ed8b00; }  .bannery-default-theme .bannery__buttons__primary:hover {   background: #c77500; }  .bannery-default-theme .bannery__buttons__secondary {   color: white;   background: transparent; }  .bannery-default-theme .bannery__buttons__secondary:hover {   text-decoration: none; }  .bannery-default-theme .bannery__title {   color: white; }  .bannery-default-theme .bannery__content {   color: white; }"
 }

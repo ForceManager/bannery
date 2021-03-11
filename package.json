@@ -2,10 +2,21 @@
   "name": "bannery",
   "version": "0.0.4",
   "private": true,
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/bannery.umd.js",
+  "module": "./dist/bannery.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/bannery.es.js",
+      "require": "./dist/bannery.umd.js"
+    }
+  },
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
   },
   "repository": {
     "type": "git",
@@ -29,12 +40,10 @@
     "deepmerge": "^4.2.2",
     "js-cookie": "^2.2.1",
     "markdown-it": "^12.0.4",
-    "vue": "^3.0.0"
+    "vue": "^3.0.5"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.11",
-    "@vue/cli-plugin-eslint": "~4.5.11",
-    "@vue/cli-service": "~4.5.11",
+    "@vitejs/plugin-vue": "^1.1.5",
     "@vue/compiler-sfc": "^3.0.7",
     "@vue/eslint-config-prettier": "^6.0.0",
     "babel-eslint": "^10.1.0",
@@ -43,6 +52,7 @@
     "eslint-plugin-vue": "^7.7.0",
     "prettier": "^2.2.1",
     "sass": "^1.32.8",
-    "sass-loader": "^10.1.1"
+    "sass-loader": "^10.1.1",
+    "vite": "^2.0.5"
   }
 }
