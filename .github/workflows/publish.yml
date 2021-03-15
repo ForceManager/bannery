@@ -11,6 +11,12 @@ jobs:
         with:
           node-version: 12
       - run: yarn install
+      - name: Cypress run
+        uses: cypress-io/github-action@v1
+        with:
+          build: yarn build
+          start: yarn serve
+          wait-on: http://localhost:5000
       - run: yarn build
       - uses: JS-DevTools/npm-publish@v1
         with:

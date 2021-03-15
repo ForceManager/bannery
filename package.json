@@ -16,10 +16,10 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "start": "vite",
+    "start": "vite build && vite preview",
     "test": "cypress run --headless --browser chrome",
     "cypress:open": "cypress open",
-    "ci": "start-server-and-test http-get://localhost:3000"
+    "ci": "start-server-and-test http-get://localhost:5000"
   },
   "repository": {
     "type": "git",
