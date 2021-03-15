@@ -7,6 +7,7 @@ const DEFAULTS = {
   enabled: true,
   position: 'bottom',
   themeClass: 'bannery-default-theme',
+  buttons: {},
 };
 
 let app;
@@ -32,4 +33,8 @@ export default Bannery;
 
 if (import.meta.env.DEV) {
   window.Bannery = Bannery;
+}
+
+if (window.Cypress) {
+  window.appReady = true;
 }

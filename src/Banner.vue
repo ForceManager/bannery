@@ -13,7 +13,11 @@
         <div class="bannery__container">
           <div class="bannery__texts">
             <div v-if="banner.title" class="bannery__title" v-html="banner.title" />
-            <div v-if="banner.description" class="bannery__content" v-html="banner.description" />
+            <div
+              v-if="banner.description"
+              class="bannery__description"
+              v-html="banner.description"
+            />
           </div>
           <div class="bannery__buttons">
             <a
@@ -71,11 +75,11 @@ export default {
         banner.value.description = transformMarkdown(banner.value.description);
 
         // css
-        injectCss(banner.value.css);
+        injectCss(banner.value.css, key);
 
         // Display
         display.value = shouldDisplay(banner.value, key);
-        hooks.onOpen && hooks.onOpen();
+        if (hooks.onOpen) display.value = hooks.onOpen();
       } catch (e) {
         display.value = false;
         console.error(e);
@@ -143,7 +147,7 @@ export default {
 }
 
 .bannery__title,
-.bannery__content {
+.bannery__description {
   padding: 0.25rem 0;
 }
 

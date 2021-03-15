@@ -23,6 +23,7 @@ export function shouldDisplay(data, key) {
       break;
     case 'session':
       storeKeyValue = sessionStorage.getItem(STORE_KEY);
+      break;
   }
 
   if (storeKeyValue) return false;
@@ -49,11 +50,13 @@ export function shouldDisplay(data, key) {
   return true;
 }
 
-export function injectCss(css) {
-  document.getElementById('bannery-styles')?.remove();
+export function injectCss(css, key) {
+  let id = 'bannery-styles';
+  if (key) id += `-${key}`;
+  document.getElementById(id)?.remove();
   if (!css) return;
   const styleTag = document.createElement('style');
-  styleTag.setAttribute('id', 'bannery-styles');
+  styleTag.setAttribute('id', id);
   styleTag.appendChild(document.createTextNode(css));
   document.head.appendChild(styleTag);
 }
