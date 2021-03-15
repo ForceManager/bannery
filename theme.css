@@ -1,6 +1,6 @@
 .bannery-default-theme {
   background: #4b5971;
-  font-family: Roboto;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
 .bannery-default-theme .bannery__buttons__primary {
@@ -25,6 +25,6 @@
   color: white;
 }
 
-.bannery-default-theme .bannery__content {
+.bannery-default-theme .bannery__description {
   color: white;
 }
