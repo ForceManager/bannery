@@ -1,47 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Bannery</title>
-    <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-      }
-      body {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      #bannery-button {
-        border: 0;
-        padding: 1rem;
-        background: darkturquoise;
-        transition: background 0.25s;
-        font-size: 1rem;
-        color: white;
-        cursor: pointer;
-        outline: 0;
-      }
-
-      #bannery-button:hover {
-        background: turquoise;
-      }
-    </style>
-    <link rel="stylesheet" href="style.css">
-  </head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bannery generator</title>
+  <script type="module" crossorigin src="/assets/index.c97b20e3.js"></script>
+  <link rel="modulepreload" href="/assets/vendor.ff445402.js">
+  <link rel="stylesheet" href="/assets/index.b97fb113.css">
+</head>
   <body>
-    <noscript>
-      <strong>We're sorry but Bannery doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <button id="bannery-button">Show banner</button>
-    <script src="bannery.umd.js"></script>
-    <script>
-      document.getElementById('bannery-button').addEventListener('click', function () {
-        Bannery({ key: "example", url: 'example.json' });
-      });
-    </script>
+    <div id="app"></div>
+    
   </body>
 </html>
