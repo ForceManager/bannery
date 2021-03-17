@@ -12,9 +12,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: cd generator 
-      - run: yarn install
-      - run: yarn build
+      - run: cd generator && yarn install && yarn build
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
