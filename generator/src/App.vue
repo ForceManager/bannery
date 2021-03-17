@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto p-4 grid grid-cols-2 gap-6">
+  <div class="container mx-auto p-4 grid grid-cols-1 md:grid-cols-2 gap-6">
     <form @submit.prevent="formSubmit">
       <h1 class="text-3xl border-b py-4 mb-4">Bannery options generator</h1>
       <SchemaForm
@@ -192,7 +192,7 @@ export default {
     function jsonScroll() {
       if (window.innerHeight + window.pageYOffset - 100 >= document.body.offsetHeight) return;
       const jsonEl = document.querySelector('.json');
-      jsonEl.style.marginTop = window.scrollY + 'px';
+      jsonEl.style.marginTop = window.innerWidth < 768 ? 0 : window.scrollY + 'px';
     }
 
     const cleanData = computed(() => {
