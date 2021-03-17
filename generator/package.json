@@ -1,0 +1,44 @@
+{
+  "name": "generator",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/embedmode/bannery"
+  },
+  "bugs": {
+    "url": "https://github.com/embedmode/bannery/issues"
+  },
+  "homepage": "https://github.com/embedmode/bannery",
+  "keywords": [
+    "library",
+    "vue",
+    "javascript",
+    "banner",
+    "ad"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@asigloo/vue-dynamic-forms": "^3.14.0",
+    "@tailwindcss/forms": "^0.2.1",
+    "@vitejs/plugin-vue": "^1.1.5",
+    "autoprefixer": "^10.2.5",
+    "bannery": "^0.0.6",
+    "clipboard-polyfill": "^3.0.2",
+    "formvuelate": "^2.2.1",
+    "postcss": "^8.2.8",
+    "tailwindcss": "^2.0.3",
+    "vue": "^3.0.5",
+    "vue-toastification": "^2.0.0-rc.1",
+    "vue3-highlightjs": "^1.0.5",
+    "yarn": "^1.22.10"
+  },
+  "devDependencies": {
+    "@vue/compiler-sfc": "^3.0.7",
+    "vite": "^2.1.0"
+  }
+}
