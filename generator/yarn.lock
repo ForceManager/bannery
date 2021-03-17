@@ -193,10 +193,10 @@ balanced-match@^1.0.0:
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
   integrity sha1-ibTRmasr7kneFk6gK4nORi1xt2c=
 
-bannery@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/bannery/-/bannery-0.0.6.tgz#ecb65b44cce6b508cfdb8f6b6ce3e0ce3d3aa60b"
-  integrity sha512-iG76HceRiA4qlwrLtt66b/dOwz4RwDcVIBDteeQJBh8lHn8AufAj5xuuzUhvnZVg1/A1rXxUOC2IXcFWb4PKWQ==
+bannery@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/bannery/-/bannery-0.0.7.tgz#c1dad892f74f6d44c48e1de6a962fdb9b364ba7f"
+  integrity sha512-w4Q+FR9qYtVgfHNmihG1OJ9bToWIJOFMk+IqeNdU3Hom2Rs+GbaqDz4MXbue79e9Jr8yNXvdQXhO3Cg4QmRlqQ==
   dependencies:
     axios "^0.21.1"
     core-js "^3.9.1"
